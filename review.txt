@@ -1,5 +1,8 @@
+Intro...
+
 Total yearly sales are $34492035.97
 
+The number of sales in each month:
 Total sales in January: $1815335.12
 Total sales in February: $2203481.24
 Total sales in March: $2809063.3
@@ -17,8 +20,10 @@ A summary of the annual sales data:
 Mean sales of the whole year: $2874336
 Maximum Sales: $4619297.12 (in December)
 Minimum Sales: $1815335.12 (in January)
+
 The most expensive product sold is Macbook Pro Laptop which costs $1700.0.
 The cheapest product sold is AAA Batteries (4-pack) which costs $2.99.
+
 The most sold item in 2019 is AAA Batteries (4-pack). Quantity sold is 31017
 
 Sales by city (from max to min):
