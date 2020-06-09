@@ -1,5 +1,7 @@
 import csv
-# reading one month
+import statistics
+f = open('review.txt', 'w+')
+# Read one month
 def read_data(month):
     data = []
     with open('Sales_{}_2019.csv'.format(month), 'r') as csv_file:
@@ -8,8 +10,7 @@ def read_data(month):
             if (row['Quantity Ordered'] != '') and (row['Quantity Ordered'] != 'Quantity Ordered'): # cleaning data
                 data.append(row)
     return data
-# one big dictionary called 'Database' that stores 12 different keys (months) i.e. 'January', 'February' etc
-# Each key (month) has a list of smaller dictionaries
+# Create a dictionary "Database" that stores data of 12 months
 months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 database = {}
 for month in months:
@@ -21,7 +22,7 @@ def monthly_sales_counter(database, month):
     for row in month_data:
         total_monthly += int(row['Quantity Ordered']) * float(row['Price Each'])
     return total_monthly
-month1 = input('Which total monthly sales data would you like to see? ')
+month1 = input('Which total monthly sales data would you like to see? ').capitalize()
 total_monthly = monthly_sales_counter(database, month1)
 print('Total sales for {} are ${}'.format(month1, round(total_monthly, 2)))
 # Output the total sale = for the whole year
@@ -35,10 +36,11 @@ def yearly_sales_counter(database):
         total_yearly += total_monthly
     return total_yearly
 total_yearly = yearly_sales_counter(database)
+print('')
 print('Total yearly sales are ${}'.format(round(total_yearly, 2)))
+f.write('Total yearly sales are ${}'.format(round(total_yearly, 2))+'\n'+'\n')
 # Should: A summary: mean, min, max, monthly changes as a percentage
-# Total sales in each month start#
-import statistics
+# Total sales in each month start #
 print(' ')
 print('The number of sales in each month:')
 def monthly_sales_counter(month):
@@ -48,20 +50,22 @@ def monthly_sales_counter(month):
         total_monthly += int(row['Quantity Ordered']) * float(row['Price Each'])
     return total_monthly
 total_monthly = monthly_sales_counter(month)
-months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 wholedata = {}
 for month in months:
     wholedata[month] = monthly_sales_counter(month)
 for m in wholedata.keys():
-    print ('Total sales in {}: ${}'.format(m, round(wholedata[m], 2)))
-#total sales in each month end#
+    print('Total sales in {}: ${}'.format(m, round(wholedata[m], 2)))
+    f.write('Total sales in {}: ${}'.format(m, round(wholedata[m], 2))+'\n')
+# total sales in each month end #
 print(' ')
 print('A summary of the annual sales data:')
+f.write('\n'+'A summary of the annual sales data:'+'\n')
 #mean sales of the whole year start#
 def year_mean(wholedata):
     mean = round(statistics.mean(wholedata.values()))
     return mean
 print('Mean sales of the whole year: ${}'.format(year_mean(wholedata)))
+f.write('Mean sales of the whole year: ${}'.format(year_mean(wholedata))+'\n')
 #mean sales of the whole year end#
 #max sales start#
 def max_value(wholedata):
@@ -71,6 +75,7 @@ def max_month(wholedata):
     key_max_month = max(wholedata.keys(), key=(lambda k: wholedata[k]))
     return key_max_month
 print('Maximum Sales: ${} (in {})'.format(round(max_value(wholedata), 2), max_month(wholedata)))
+f.write('Maximum Sales: ${} (in {})'.format(round(max_value(wholedata), 2), max_month(wholedata))+'\n')
 #max sales end#
 #min sales start#
 def min_value(wholedata):
@@ -80,13 +85,13 @@ def min_month(wholedata):
     key_min_month = min(wholedata.keys(), key=(lambda k: wholedata[k]))
     return key_min_month
 print('Minimum Sales: ${} (in {})'.format(round(min_value(wholedata), 2), min_month(wholedata)))
+f.write('Minimum Sales: ${} (in {})'.format(round(min_value(wholedata), 2), min_month(wholedata))+'\n')
 #min sales end#
 #monthly changes as a percentage start#
 print(' ')
 print("We can calculate the percentage change between two months of choice")
-first_month = input("which month do you want to look at?['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']")
-second_month = input(
-    "which month do you want to compare it with?['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']")
+first_month = input("Which month do you want to look at? ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] ").capitalize()
+second_month = input("Which month do you want to compare it with? ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] ").capitalize()
 perchange = round(((wholedata[second_month]) - wholedata[first_month]) / wholedata[first_month] * 100)
 print("The percentage change of sales of {} compared to {} was {}%".format(first_month, second_month, perchange))
 #monthly changes as a percentage end#
@@ -101,7 +106,9 @@ def most_expensive_product(database):
                 highest_price_item = row['Product']
     return highest_price_item, highest_price
 highest_price_item, highest_price = most_expensive_product(database)
-print('The most expensive product sold is {} which costs {}$.'.format(highest_price_item, highest_price))
+print('')
+print('The most expensive product sold is {} which costs ${}.'.format(highest_price_item, highest_price))
+f.write('The most expensive product sold is {} which costs ${}.'.format(highest_price_item, highest_price)+'\n')
 def cheapest_product(database):
     firstProduct = True
     for month in list(database.keys()):
@@ -116,7 +123,8 @@ def cheapest_product(database):
                 lowest_price_item = row['Product']
     return lowest_price_item, lowest_price
 lowest_price_item, lowest_price = cheapest_product(database)
-print('The cheapest product sold is {} which costs {}$.'.format(lowest_price_item, lowest_price))
+print('The cheapest product sold is {} which costs ${}.'.format(lowest_price_item, lowest_price))
+f.write('The cheapest product sold is {} which costs ${}.'.format(lowest_price_item, lowest_price)+'\n')
 # Which product was sold the most across each month/the year
 def best_seller_month(database, month):
     item_quantities = {}
@@ -132,7 +140,8 @@ def best_seller_month(database, month):
             highest_quantity = int(item_quantities[item])
             highest_quantity_item = item
     return highest_quantity_item, highest_quantity
-month = input('Which month would you like to see? ')
+print('')
+month = input('Which month would you like to see? ').capitalize()
 highest_quantity_item_month, highest_quantity_month = best_seller_month(database, month)
 print('The most sold item in {} is {}. Quantity sold is {}'.format(month, highest_quantity_item_month, highest_quantity_month))
 def best_seller_year(database):
@@ -152,6 +161,7 @@ def best_seller_year(database):
     return highest_quantity_item, highest_quantity
 highest_quantity_item_year, highest_quantity_year = best_seller_year(database)
 print('The most sold item in 2019 is {}. Quantity sold is {}'.format( highest_quantity_item_year, highest_quantity_year))
+f.write('The most sold item in 2019 is {}. Quantity sold is {}'.format( highest_quantity_item_year, highest_quantity_year)+'\n'+'\n')
 # Sales by city by ranking
 def sales_by_city():
     cities = {}
@@ -164,6 +174,10 @@ def sales_by_city():
     return cities
 print('')
 print('Sales by city (from max to min):')
+f.write('Sales by city (from max to min):'+'\n')
 sales_by_city_ordered = sorted(sales_by_city().items(), key=lambda x: x[1], reverse=True)
 for index, city in enumerate(sales_by_city_ordered):
-    print(str(index+1)+'.',city[0]+':','$'+str(round(city[1],2)))
+    output = str(index+1)+'. '+city[0]+': '+'$'+str(round(city[1],2))
+    print(output)
+    f.write(output+'\n')
+f.close()

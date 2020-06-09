@@ -1,0 +1,33 @@
+Total yearly sales are $34492035.97
+
+Total sales in January: $1815335.12
+Total sales in February: $2203481.24
+Total sales in March: $2809063.3
+Total sales in April: $3396059.11
+Total sales in May: $3144584.8
+Total sales in June: $2578293.3
+Total sales in July: $2646899.69
+Total sales in August: $2244412.31
+Total sales in September: $2098816.7
+Total sales in October: $3736884.05
+Total sales in November: $3198909.23
+Total sales in December: $4619297.12
+
+A summary of the annual sales data:
+Mean sales of the whole year: $2874336
+Maximum Sales: $4619297.12 (in December)
+Minimum Sales: $1815335.12 (in January)
+The most expensive product sold is Macbook Pro Laptop which costs $1700.0.
+The cheapest product sold is AAA Batteries (4-pack) which costs $2.99.
+The most sold item in 2019 is AAA Batteries (4-pack). Quantity sold is 31017
+
+Sales by city (from max to min):
+1. San Francisco: $8262203.91
+2. Los Angeles: $5452570.8
+3. New York City: $4664317.43
+4. Boston: $3661642.01
+5. Atlanta: $2795498.58
+6. Dallas: $2767975.4
+7. Seattle: $2747755.48
+8. Portland: $2320490.61
+9. Austin: $1819581.75
