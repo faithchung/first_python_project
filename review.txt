@@ -1,4 +1,4 @@
-Intro...
+In this project we analysed Monthly Sales Data of sell of electronics equipment across USA in 2019
 
 Total yearly sales are $34,492,035.97.
 
@@ -21,6 +21,7 @@ Mean sales of the whole year: $2,874,336
 Maximum Sales: $4,619,297.12 (in December)
 Minimum Sales: $1,815,335.12 (in January)
 
+The percentage change of sales of May compared to December was 47%
 The percentage change of sales between two consecutive months:
 January/February: 21%
 February/March: 27%
@@ -37,8 +38,8 @@ November/December: 44%
 The most expensive product sold is Macbook Pro Laptop which costs $1,700.0.
 The cheapest product sold is AAA Batteries (4-pack) which costs $2.99.
 
-The most sold item in May is AAA Batteries (4-pack). Quantity sold is 2,931.
-The least sold item in May is LG Washing Machine. Quantity sold is 64.
+The most sold item in October is AAA Batteries (4-pack). Quantity sold is 3,362.
+The least sold item in October is LG Dryer. Quantity sold is 50.
 
 The most sold item in 2019 is AAA Batteries (4-pack). Quantity sold is 31,017.
 The least sold item in 2019 is LG Dryer. Quantity sold is 646.

@@ -1,8 +1,8 @@
 import csv
 import statistics
 f = open('review.txt', 'w+')
-print('Intro...\n')
-f.write('Intro...\n\n')
+print('In this project we analysed Monthly Sales Data of sell of electronics equipment across USA in 2019\n')
+f.write('In this project we analysed Monthly Sales Data of sell of electronics equipment across USA in 2019\n\n')
 # Read one month
 def read_one_month(month):
     data = []
@@ -85,6 +85,7 @@ first_month = input("Which month do you want to look at? ").capitalize()
 second_month = input("Which month do you want to compare it with? ").capitalize()
 perchange = round(((wholedata[second_month]) - wholedata[first_month]) / wholedata[first_month] * 100)
 print("The percentage change of sales of {} compared to {} was {}%\n".format(first_month, second_month, perchange))
+f.write("The percentage change of sales of {} compared to {} was {}%\n".format(first_month, second_month, perchange))
 # Monthly changes as a percentage for the whole year
 print("The percentage change of sales between two consecutive months:")
 f.write("The percentage change of sales between two consecutive months:\n")
